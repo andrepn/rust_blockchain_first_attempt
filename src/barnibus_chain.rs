@@ -10,9 +10,10 @@
 
 // Describe Block struct
 // Different Tx enums (Bonds, Tokes)
-// Calculate hash
-// Info
 use std::fmt;
+use std::sync::mpsc::channel;
+use std::sync::{Arc, Mutex};
+use std::thread;
 
 pub struct Block {
     txs: Vec<Transaction>,
@@ -121,12 +122,13 @@ pub enum Permissions {}
 
 // Describe Blockchain struct NEED WORK
 pub struct Blockchain {
-    chain: Vec<Block>,
+    chain: Arc<Mutex<Vec<Block>>>,
 }
 
 // Impl method to add block
 impl Blockchain {
     pub fn add_block() -> Blockchain {}
+    pub fn genesis() -> Blockchain {}
 }
 
 // Check consensus
